@@ -1,0 +1,986 @@
+
+    /* Base Reset & Global Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* Seamless Navigation */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem 2rem;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .main-nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        list-style: none;
+    }
+
+    .main-nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .main-nav a:hover {
+        color: #007bff;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 6rem 2rem 2rem;
+    }
+
+    .hero-content {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .info {
+        flex: 1;
+    }
+
+    .info h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .profile-pic {
+        flex: 1;
+        max-width: 400px;
+    }
+
+    .profile-pic img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Skills Section */
+    .skills-section {
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+    }
+
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* About Section */
+    .about-section {
+        padding: 4rem 2rem;
+        background: white;
+    }
+
+    .about-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .about-content h2 {
+        margin-bottom: 2rem;
+    }
+
+    /* Qualifications Section */
+    .qualifications-section {
+        padding: 4rem 2rem;
+        background: #f8f9fa;
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        background: #007bff;
+    }
+
+    .year-container {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        width: 45%;
+        position: relative;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .year-container:nth-child(odd) {
+        align-self: flex-start;
+    }
+
+    .year-container:nth-child(even) {
+        align-self: flex-end;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        padding: 4rem 2rem;
+        background: white;
+    }
+
+    .contact-container {
+        display: flex;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .contact-form {
+        flex: 1;
+    }
+
+    .contact-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .contact-form button {
+        padding: 1rem;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+        background: #0056b3;
+    }
+
+    .contact-methods {
+        flex: 1;
+        padding-left: 2rem;
+        border-left: 2px solid #eee;
+    }
+
+    .contact-methods ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-methods a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .cards-container {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-container {
+            flex-direction: column;
+        }
+
+        .contact-methods {
+            padding-left: 0;
+            border-left: none;
+            border-top: 2px solid #eee;
+            padding-top: 2rem;
+        }
+
+        .timeline::before {
+            left: 20px;
+        }
+
+        .year-container {
+            width: 80%;
+            margin-left: 40px;
+        }
+    }
+
+    /*                                                      /
+
+
+
+
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    line-height: 1.6 !important;
+    color: #333 !important;
+    background-color: #f4f4f4 !important;
+}
+
+/* Navigation */
+.main-nav {
+    background-color: #2c3e50 !important;
+    padding: 1rem 0 !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+}
+
+.main-nav ul {
+    list-style: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+}
+
+.main-nav a {
+    color: #ecf0f1 !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    padding: 0.5rem 1rem !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.main-nav a:hover {
+    background-color: #34495e !important;
+    border-radius: 5px !important;
+}
+
+/* Hero Section */
+.hero {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 4rem 2rem !important;
+    background-color: #3498db !important;
+    color: #fff !important;
+}
+
+.hero-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    max-width: 1200px !important;
+    width: 100% !important;
+}
+
+.info {
+    flex: 1 !important;
+}
+
+.info h1 {
+    font-size: 2.5rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.info p {
+    font-size: 1.2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.profile-pic img {
+    border-radius: 50% !important;
+    width: 600px !important;
+    height: 600px !important;
+    object-fit: cover !important;
+    border: 10px solid #0099ff !important;
+    
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 4rem 2rem !important;
+    background-color: #fff !important;
+    text-align: center !important;
+}
+
+.skills-section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+    color: #2c3e50 !important;
+}
+
+.cards-container {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    flex-wrap: wrap !important;
+}
+
+.card {
+    background-color: #ecf0f1 !important;
+    padding: 1.5rem !important;
+    border-radius: 10px !important;
+    width: 300px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.card:hover {
+    transform: translateY(-10px) !important;
+}
+
+.card h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    color: #2c3e50 !important;
+}
+
+.card ul {
+    list-style: none !important;
+    text-align: left !important;
+}
+
+.card ul li {
+    margin-bottom: 0.5rem !important;
+    font-size: 1rem !important;
+}
+
+/* About Section */
+.about-section {
+    padding: 4rem 2rem !important;
+    background-color: #f4f4f4 !important;
+}
+
+.about-content {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.about-section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+    color: #2c3e50 !important;
+    text-align: center !important;
+}
+
+.about-text {
+    text-align: left !important;
+}
+
+.about-text p {
+    font-size: 1.1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.about-text h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    color: #2c3e50 !important;
+}
+
+.about-text ul {
+    list-style: disc !important;
+    margin-left: 2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.about-text ul li {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Qualifications Section */
+.qualifications-section {
+    padding: 4rem 2rem !important;
+    background-color: #fff !important;
+}
+
+.qualifications-section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+    color: #2c3e50 !important;
+    text-align: center !important;
+}
+
+.timeline {
+    display: flex !important;
+    justify-content: space-around !important;
+    flex-wrap: wrap !important;
+    gap: 2rem !important;
+}
+
+.year-container {
+    background-color: #ecf0f1 !important;
+    padding: 1.5rem !important;
+    border-radius: 10px !important;
+    width: 300px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.year-container:hover {
+    transform: translateY(-10px) !important;
+}
+
+.year-container h4 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    color: #2c3e50 !important;
+}
+
+.qualification h3 {
+    font-size: 1.2rem !important;
+    margin-bottom: 1rem !important;
+    color: #2c3e50 !important;
+}
+
+.qualification p {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.qualification ul {
+    list-style: disc !important;
+    margin-left: 1.5rem !important;
+}
+
+.qualification ul li {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 4rem 2rem !important;
+    background-color: #3498db !important;
+    color: #fff !important;
+}
+
+.contact-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    gap: 2rem !important;
+}
+
+.contact-form {
+    flex: 1 !important;
+}
+
+.contact-form h2 {
+    font-size: 2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100% !important;
+    padding: 0.5rem !important;
+    margin-bottom: 1rem !important;
+    border: none !important;
+    border-radius: 5px !important;
+}
+
+.contact-form button {
+    padding: 0.5rem 1rem !important;
+    background-color: #2c3e50 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.contact-form button:hover {
+    background-color: #34495e !important;
+}
+
+.contact-methods {
+    flex: 1 !important;
+}
+
+.contact-methods h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.contact-methods ul {
+    list-style: none !important;
+}
+
+.contact-methods ul li {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.contact-methods a {
+    color: #fff !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.contact-methods a:hover {
+    color: #ecf0f1 !important;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 4rem 2rem !important;
+    background-color: #fff !important;
+    text-align: center !important;
+}
+
+.skills-section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+    color: #2c3e50 !important;
+}
+
+.cards-container {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    flex-wrap: wrap !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.card {
+    background-color: #ff0000 !important;
+    padding: 1.5rem !important;
+    border-radius: 10px !important;
+    width: 300px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    border: 2px solid transparent !important;
+}
+
+.card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    border-color: #3498db !important;
+    background-color: #fff !important;
+}
+
+.card h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    color: #2c3e50 !important;
+    transition: color 0.3s ease !important;
+}
+
+.card:hover h3 {
+    color: #3498db !important;
+}
+
+.card ul {
+    list-style: none !important;
+    text-align: left !important;
+    padding-left: 0 !important;
+}
+
+.card ul li {
+    margin-bottom: 0.5rem !important;
+    font-size: 1rem !important;
+    color: #333 !important;
+    transition: color 0.3s ease !important;
+}
+
+.card:hover ul li {
+    color: #555 !important;
+}
+
+
+
+/* About Section */
+.about-section {
+    padding: 4rem 2rem !important;
+    background-color: #f4f4f4 !important;
+}
+
+.about-content {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 2rem !important;
+    background-color: #fff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.about-content:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(-5px) !important;
+}
+
+.about-section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+    color: #2c3e50 !important;
+    text-align: center !important;
+    transition: color 0.3s ease !important;
+}
+
+.about-content:hover h2 {
+    color: #3498db !important;
+}
+
+.about-text {
+    text-align: left !important;
+}
+
+.about-text p {
+    font-size: 1.1rem !important;
+    margin-bottom: 1rem !important;
+    color: #333 !important;
+    transition: color 0.3s ease !important;
+}
+
+.about-content:hover .about-text p {
+    color: #555 !important;
+}
+
+.about-text h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    color: #2c3e50 !important;
+    transition: color 0.3s ease !important;
+}
+
+.about-content:hover .about-text h3 {
+    color: #3498db !important;
+}
+
+.about-text ul {
+    list-style: disc !important;
+    margin-left: 2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.about-text ul li {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    color: #333 !important;
+    transition: color 0.3s ease !important;
+}
+
+.about-content:hover .about-text ul li {
+    color: #555 !important;
+}
+
+/* Specific Styling for Sub-Sections */
+.academic-background,
+.project-experience,
+.passion-statement {
+    margin-bottom: 2rem !important;
+    padding: 1rem !important;
+    background-color: #ecf0f1 !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+}
+
+.academic-background:hover,
+.project-experience:hover,
+.passion-statement:hover {
+    background-color: #fff !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-5px) !important;
+}
+
+.closing {
+    font-style: italic !important;
+    color: #3498db !important;
+    text-align: center !important;
+    margin-top: 2rem !important;
+    transition: color 0.3s ease !important;
+}
+
+.about-content:hover .closing {
+    color: #2c3e50 !important;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 4rem 2rem !important;
+    background-color: #fff !important;
+    text-align: center !important;
+}
+
+.skills-section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+    color: #2c3e50 !important;
+}
+
+.cards-container {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    flex-wrap: wrap !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.card {
+    background-color: #ecf0f1 !important;
+    padding: 1.5rem !important;
+    border-radius: 10px !important;
+    width: 300px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    border: 2px solid transparent !important;
+}
+
+.card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    border-color: #3498db !important;
+    background-color: #fff !important;
+}
+
+.card h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    color: #2c3e50 !important;
+    transition: color 0.3s ease !important;
+}
+
+.card:hover h3 {
+    color: #3498db !important;
+}
+
+.card ul {
+    list-style: none !important;
+    text-align: left !important;
+    padding-left: 0 !important;
+}
+
+.card ul li {
+    margin-bottom: 0.5rem !important;
+    font-size: 1rem !important;
+    color: #333 !important;
+    transition: color 0.3s ease !important;
+}
+
+.card:hover ul li {
+    color: #555 !important;
+}
+
+
+
+
+/************************about.css****************************/
+
+
+
+/* About Section */
+.about-section {
+    padding: 60px 20px !important;
+    background-color: #111 !important; /* Black background */
+    color: #fff !important; /* White text */
+    text-align: center !important;
+}
+
+.about-section h2 {
+    font-size: 2.5em !important;
+    margin-bottom: 20px !important;
+    font-weight: bold !important;
+    color: #f00 !important; /* Red for headings */
+}
+
+.about-section h3 {
+    font-size: 1.8em !important;
+    color: #f00 !important; /* Red for subheadings */
+    margin-top: 30px !important;
+    font-weight: 600 !important;
+}
+
+.about-section p {
+    font-size: 1.1em !important;
+    line-height: 1.6 !important;
+    color: #ddd !important; /* Lighter text color for readability */
+    margin-bottom: 20px !important;
+}
+
+.about-section .text-container {
+    margin-bottom: 40px !important;
+    padding: 20px !important;
+    background-color: #fff !important; /* White background */
+    color: #000 !important; /* Black text */
+    border-radius: 8px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+}
+
+.about-section .text-container::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #007BFF !important; /* Blue background */
+    transition: left 0.4s ease !important; /* Slide-in effect */
+}
+
+.about-section .text-container:hover {
+    color: #fff !important; /* White text on hover */
+}
+
+.about-section .text-container:hover::before {
+    left: 0 !important; /* Slide in the blue background */
+}
+
+.about-section .text-container ul {
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin-top: 15px !important;
+}
+
+.about-section .text-container ul li {
+    font-size: 1.1em !important;
+    color: #bbb !important;
+    margin-bottom: 8px !important;
+    text-align: left !important;
+}
+
+.about-section .intro {
+    font-size: 1.2em !important;
+    font-weight: 400 !important;
+    margin-bottom: 20px !important;
+    color: #ccc !important;
+    text-align: left !important;
+}
+
+.about-section .closing {
+    font-size: 1.2em !important;
+    font-weight: 600 !important;
+    margin-top: 30px !important;
+    color: #f00 !important;
+}
+
+/* Academic and Project Experience Section */
+.about-section .academic-background,
+.about-section .project-experience {
+    text-align: left !important;
+    max-width: 800px !important;
+    margin: 20px auto !important;
+    padding: 30px !important;
+    background-color: #fff !important; /* White background */
+    color: #000 !important; /* Black text */
+    border-radius: 8px !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5) !important; /* Shadow for separation */
+    margin-top: 40px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+}
+
+.about-section .academic-background::before,
+.about-section .project-experience::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #007BFF !important; /* Blue background */
+    transition: left 0.4s ease !important;
+}
+
+.about-section .academic-background:hover,
+.about-section .project-experience:hover {
+    color: #fff !important; /* White text on hover */
+}
+
+.about-section .academic-background:hover::before,
+.about-section .project-experience:hover::before {
+    left: 0 !important; /* Slide in the blue background */
+}
+
+.about-section .academic-background h3,
+.about-section .project-experience h3 {
+    font-size: 1.6em !important;
+    margin-bottom: 15px !important;
+    font-weight: 600 !important;
+    color: #f00 !important; /* Red for headings */
+}
+
+.about-section .academic-background ul,
+.about-section .project-experience ul {
+    list-style-type: none !important;
+    padding-left: 20px !important;
+}
+
+.about-section .academic-background ul li,
+.about-section .project-experience ul li {
+    font-size: 1.1em !important;
+    color: #ddd !important;
+    margin-bottom: 12px !important;
+}
+
+/* Passion Statement */
+.about-section .passion-statement p {
+    font-style: italic !important;
+    font-size: 1.2em !important;
+    margin-top: 20px !important;
+    color: #ccc !important;
+    text-align: center !important;
+    font-weight: 300 !important;
+}
