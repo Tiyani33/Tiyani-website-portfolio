@@ -25,3 +25,25 @@ function sendMessage(event) {
         }
     }
 }
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').split('.')[0];
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// Hover effect to dynamically change text color
+document.querySelectorAll('.content-box').forEach(box => {
+    box.addEventListener('mouseenter', () => {
+        box.style.backgroundColor = '#66fcf1';
+        box.style.color = '#1f2833';
+    });
+    box.addEventListener('mouseleave', () => {
+        box.style.backgroundColor = '#45a29e';
+        box.style.color = 'white';
+    });
+});
