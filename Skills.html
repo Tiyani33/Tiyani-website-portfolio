@@ -5,25 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2d46b9;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #00c6ff;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #e3e6f5;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        li:hover {
+            background-color: #d0d9f2;
+            transform: scale(1.03);
+        }
+
+    </style>
 </head>
 <body>
   <header>
       <h1>About Me</h1>
-      <a href="index.html">Home</a>
-      <a href="Skills.html">Skills</a>
-      <a href="Qualifications.html">Qualifications</a>
-      <a href="Contact.html">Contact</a>
+      <nav>
+          <a href="index.html">Home</a>
+          <a href="Skills.html">Skills</a>
+          <a href="Qualifications.html">Qualifications</a>
+          <a href="Contact.html">Contact</a>
+      </nav>
+  </header>
 
-    </header>
-    <section>
-        <ul>
-            <li>Front-End Development (HTML, CSS, JavaScript, React)</li>
-            <li>Back-End Development (Node.js, Python, PHP)</li>
-            <li>UX/UI Design (Figma, Adobe XD, Wireframing, Prototyping)</li>
-            <li>Database Management (MySQL, MongoDB)</li>
-            <li>Problem-Solving & Critical Thinking</li>
-            <li>Team Collaboration & Communication</li>
-        </ul>
-    </section>
+  <section>
+      <h2>My Skills</h2>
+      <ul>
+          <li>Front-End Development (HTML, CSS, JavaScript, React)</li>
+          <li>Back-End Development (Node.js, Python, PHP)</li>
+          <li>UX/UI Design (Figma, Adobe XD, Wireframing, Prototyping)</li>
+          <li>Database Management (MySQL, MongoDB)</li>
+          <li>Problem-Solving & Critical Thinking</li>
+          <li>Team Collaboration & Communication</li>
+      </ul>
+  </section>
 </body>
 </html>
