@@ -3,38 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qualifications</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Qualifications - Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #162447;
+            color: white;
+            text-align: center;
+            padding: 2em 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        nav {
+            margin-top: 1em;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #00c6ff;
+        }
+
+        /* Container for Qualifications */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: #162447;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .card h2 {
+            color: #00c6ff;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .card p, .card ul {
+            font-size: 1.1em;
+            color: #e0e0e0;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-      <h1>About Me</h1>
-      <nav>
-          <a href="index.html">Home</a>
-          <a href="Skills.html">Skills</a>
-          <a href="Qualifications.html">Qualifications</a>
-          <a href="Contact.html">Contact</a>
-      </nav>
-  </header>
+    <header>
+        <h1>My Qualifications</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Skills.html">Skills</a>
+            <a href="Qualifications.html">Qualifications</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
 
-  <section class="container">
-      <div class="card">
-          <h2>Education</h2>
-          <p>Honours Degree in Information Technology – Vaal University of Technology, 2024</p>
-      </div>
+    <!-- Qualifications Section -->
+    <section class="container">
+        <div class="card">
+            <h2>Education</h2>
+            <p>Honours Degree in Information Technology – Vaal University of Technology, 2024</p>
+        </div>
 
-      <div class="card">
-          <h2>Certifications</h2>
-          <ul>
-              <li>Diploma in Information Technology – Vaal University of Technology</li>
-              <li>Advanced Diploma in Information Technology – Vaal University of Technology</li>
-          </ul>
-      </div>
+        <div class="card">
+            <h2>Certifications</h2>
+            <ul>
+                <li>Diploma in Information Technology – Vaal University of Technology</li>
+                <li>Advanced Diploma in Information Technology – Vaal University of Technology</li>
+            </ul>
+        </div>
 
-      <div class="card">
-          <h2>Internships & Experience</h2>
-          <p>Intern at Vaal University of Technology, gaining valuable experience in helpdesk and desktop support.</p>
-      </div>
-  </section>
+        <div class="card">
+            <h2>Internships & Experience</h2>
+            <p>Intern at Vaal University of Technology, gaining valuable experience in helpdesk and desktop support.</p>
+        </div>
+    </section>
+
+    <script>
+        // Add any JavaScript functionality here if needed
+        // For example, you can add animations or interactive elements
+    </script>
 </body>
 </html>

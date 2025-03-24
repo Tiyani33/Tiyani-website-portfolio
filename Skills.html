@@ -4,20 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         header {
-            background-color: #2d46b9;
+            background-color: #16213e;
             color: white;
             text-align: center;
-            padding: 1em;
+            padding: 2em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0f3460, #16213e);
+            z-index: -1;
+            animation: gradientShift 10s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
+            }
         }
 
         nav a {
@@ -34,11 +59,23 @@
 
         section {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 40px auto;
             padding: 20px;
-            background-color: white;
+            background-color: #16213e;
             border-radius: 12px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00c6ff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
         }
 
         ul {
@@ -47,41 +84,109 @@
         }
 
         li {
-            background-color: #e3e6f5;
+            background-color: #0f3460;
             margin-bottom: 10px;
-            padding: 10px 15px;
+            padding: 15px;
             border-radius: 8px;
             transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease-in-out;
+        }
+
+        li:hover::before {
+            left: 100%;
         }
 
         li:hover {
-            background-color: #d0d9f2;
-            transform: scale(1.03);
+            background-color: #00c6ff;
+            color: #16213e;
+            transform: scale(1.05);
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            section {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+        }
     </style>
 </head>
 <body>
-  <header>
-      <h1>About Me</h1>
-      <nav>
-          <a href="index.html">Home</a>
-          <a href="Skills.html">Skills</a>
-          <a href="Qualifications.html">Qualifications</a>
-          <a href="Contact.html">Contact</a>
-      </nav>
-  </header>
+    <header>
+        <h1>About Me</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Skills.html">Skills</a>
+            <a href="Qualifications.html">Qualifications</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
 
-  <section>
-      <h2>My Skills</h2>
-      <ul>
-          <li>Front-End Development (HTML, CSS, JavaScript, React)</li>
-          <li>Back-End Development (Node.js, Python, PHP)</li>
-          <li>UX/UI Design (Figma, Adobe XD, Wireframing, Prototyping)</li>
-          <li>Database Management (MySQL, MongoDB)</li>
-          <li>Problem-Solving & Critical Thinking</li>
-          <li>Team Collaboration & Communication</li>
-      </ul>
-  </section>
+    <section>
+        <h2>My Skills</h2>
+        <ul>
+            <li>Front-End Development (HTML, CSS, JavaScript, React)</li>
+            <li>Back-End Development (Node.js, Python, PHP)</li>
+            <li>UX/UI Design (Figma, Adobe XD, Wireframing, Prototyping)</li>
+            <li>Database Management (MySQL, MongoDB)</li>
+            <li>Problem-Solving & Critical Thinking</li>
+            <li>Team Collaboration & Communication</li>
+        </ul>
+    </section>
+
+    <script>
+        // JavaScript for additional interactivity
+        document.addEventListener('DOMContentLoaded', () => {
+            const listItems = document.querySelectorAll('li');
+
+            listItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transition = 'all 0.3s ease-in-out';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    item.style.transition = 'all 0.3s ease-in-out';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -3,13 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Contact Me - Software Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #162447;
+            color: white;
+            text-align: center;
+            padding: 2em 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        nav {
+            margin-top: 1em;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #00c6ff;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #162447;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-info li i {
+            margin-right: 10px;
+            color: #00c6ff;
+        }
+
+        .contact-info a {
+            color: #00c6ff;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .contact-info a:hover {
+            color: #ff4d4d;
+        }
+
+        /* Contact Form Section */
+        .contact-form {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #162447;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #00c6ff;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #00c6ff;
+            border-radius: 5px;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            font-size: 1em;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #ff4d4d;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00c6ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .contact-form button:hover {
+            background-color: #ff4d4d;
+        }
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            background-color: #00c6ff;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease-in-out;
+            animation: bounce 2s infinite;
+        }
+
+        .chatbot-toggle:hover {
+            background-color: #ff4d4d;
+        }
+
+        .chatbot-box {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: #162447;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            background-color: #00c6ff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .chatbot-avatar {
+            margin-right: 10px;
+        }
+
+        .chatbot-messages {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+            background-color: #1a1a2e;
+        }
+
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid #00c6ff;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+        }
+
+        .chatbot-input button {
+            background-color: #00c6ff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .chatbot-input button:hover {
+            background-color: #ff4d4d;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>About Me</h1>
+        <h1>Contact Me</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="Skills.html">Skills</a>
@@ -18,6 +259,7 @@
         </nav>
     </header>
 
+    <!-- Contact Info Section -->
     <section class="contact-info">
         <p>If you are interested in hiring me, feel free to reach out!</p>
         <ul>
@@ -26,6 +268,17 @@
             <li><i class="fab fa-linkedin"></i> LinkedIn: <a href="http://linkedin.com/in/tiyani-confidence-334541197" target="_blank">My LinkedIn</a></li>
             <li><i class="fab fa-github"></i> GitHub: <a href="https://github.com/Tiyani33" target="_blank">My GitHub</a></li>
         </ul>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form">
+        <h2>Send Me a Message</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     </section>
 
     <!-- Chatbot -->
@@ -51,6 +304,46 @@
         </div>
     </div>
 
-    <script src="script.js" defer></script>
+    <script>
+        // Chatbot Toggle
+        function toggleChatbot() {
+            const chatbotBox = document.getElementById('chatbotBox');
+            chatbotBox.style.display = chatbotBox.style.display === 'none' || chatbotBox.style.display === '' ? 'block' : 'none';
+        }
+
+        // Send Message Function
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const chatMessages = document.getElementById('chatMessages');
+            const message = userInput.value.trim();
+
+            if (message) {
+                const userMessage = document.createElement('div');
+                userMessage.textContent = message;
+                userMessage.style.textAlign = 'right';
+                userMessage.style.margin = '10px 0';
+                chatMessages.appendChild(userMessage);
+
+                userInput.value = '';
+
+                // Simulate a response from the chatbot
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.textContent = 'Hello! How can I assist you today?';
+                    botMessage.style.textAlign = 'left';
+                    botMessage.style.margin = '10px 0';
+                    chatMessages.appendChild(botMessage);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            document.getElementById('contactForm').reset();
+        });
+    </script>
 </body>
 </html>
