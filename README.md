@@ -5,6 +5,9 @@ This is a personal portfolio website for showcasing my web development skills an
 - Interactive chatbot
 - Downloadable CV
 
+![Portfolio Screenshot](assets/Citi_Portifolio.png)
+
+
 ## Technologies Used
 - HTML
 - CSS
@@ -13,3 +16,7 @@ This is a personal portfolio website for showcasing my web development skills an
 ## Contact Information
 - Email: [tiyanieyc33@gmail.com](mailto:tiyanieyc33@gmail.com)
 - LinkedIn: [My Profile](http://linkedin.com/in/tiyani-confidence-334541197)
+
+## 🌐 Live Demo
+
+[Live Demo Link](https://tinyu01.github.io/citi_portfolio_website/)
