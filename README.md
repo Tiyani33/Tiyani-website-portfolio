@@ -19,4 +19,4 @@ This is a personal portfolio website for showcasing my web development skills an
 
 ## 🌐 Live Demo
 
-[Live Demo Link](https://tinyu01.github.io/citi_portfolio_website/)
+[Live Demo Link](https://tiyani33.github.io/Tiyani-website-portfolio/)
