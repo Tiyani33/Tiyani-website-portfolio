@@ -5,7 +5,7 @@ This is a personal portfolio website for showcasing my web development skills an
 - Interactive chatbot
 - Downloadable CV
 
-![Portfolio Screenshot](assets/Citi_Portifolio.png)
+![Portfolio Screenshot](img/web.png)
 
 
 ## Technologies Used
