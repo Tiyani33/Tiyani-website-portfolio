@@ -3,429 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills</title>
+    <title>Skills - Confidence Nyathi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a2e;
-            color: #e0e0e0;
+        :root {
+            --primary: #5046e4;
+            --primary-dark: #3832a0;
+            --primary-light: #7c74ff;
+            --secondary: #00d4ff;
+            --accent: #ff7d54;
+            --dark: #121420;
+            --dark-blue: #1d2030;
+            --light: #f8f9ff;
+            --text: #333340;
+            --text-light: #9395a6;
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --border-radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            box-sizing: border-box;
         }
 
-        header {
-            background-color: #16213e;
-            color: white;
-            text-align: center;
-            padding: 2em;
-            position: relative;
-            overflow: hidden;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
+        .dark-mode {
+            --light: var(--dark-blue);
+            --text: #e0e1ff;
+            --text-light: #8183a1;
+        }
+
+        /* Navigation styles */
+        .navbar {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #0f3460, #16213e);
-            z-index: -1;
-            animation: gradientShift 10s infinite alternate;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            transition: all 0.3s ease;
+            background: rgba(248, 249, 255, 0.85); /* Light background with opacity */
+            backdrop-filter: blur(12px); /* Blur effect for glassmorphism */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        @keyframes gradientShift {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.2);
-            }
+        .navbar.scrolled {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2.5rem;
+            box-shadow: var(--shadow-sm);
         }
 
-        nav a {
-            color: white;
-            margin: 0 15px;
+        .dark-mode .navbar {
+            background: rgba(29, 32, 48, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .dark-mode .navbar.scrolled {
+            background: rgba(29, 32, 48, 0.8);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
             text-decoration: none;
-            font-size: 1.1em;
-            transition: color 0.3s ease-in-out;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        nav a:hover {
-            color: #00c6ff;
+        .dark-mode .logo {
+            color: var(--light);
         }
 
-        section {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #16213e;
-            border-radius: 12px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out;
+        .logo span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        section:hover {
-            transform: translateY(-10px);
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
         }
 
-        h2 {
-            text-align: center;
-            color: #00c6ff;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            background-color: #0f3460;
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 8px;
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
             position: relative;
-            overflow: hidden;
         }
 
-        li::before {
+        .dark-mode .nav-link {
+            color: var(--light);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s ease-in-out;
         }
 
-        li:hover::before {
-            left: 100%;
+        /* Skills Section */
+        .skills-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 2rem;
         }
 
-        li:hover {
-            background-color: #00c6ff;
-            color: #16213e;
-            transform: scale(1.05);
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
         }
 
-        section {
-            animation: fadeIn 1s ease-in-out;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        /* Responsive Design */
+        .skill-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .skill-card {
+            background: var(--dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .skill-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .dark-mode .skill-title {
+            color: var(--light);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .skill-item::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin-right: 0.75rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            nav a {
-                display: block;
-                margin: 10px 0;
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
-
-            section {
-                margin: 20px;
-                padding: 15px;
-            }
-
-            h2 {
-                font-size: 2em;
+            
+            .navbar {
+                padding: 1rem;
             }
         }
-        
     </style>
 </head>
 <body>
-    <header>
-        <h1>About Me</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="About.html">About</a>
-            <a href="Skills.html">Skills</a>
-            <a href="Education.html">Education</a>
-            <a href="Certificates.html">Certificates</a>
-            <a href="Internships.html">Experience</a>
-            <a href="Contact.html">Contact</a>
-        </nav>
-    </header>
-
-    <section>
-        <h2>My Skills</h2>
-        <ul>
-            <li>Front-End Development (HTML, CSS, JavaScript, React)</li>
-            <li>Back-End Development (Node.js, Python, PHP)</li>
-            <li>UX/UI Design (Figma, Adobe XD, Wireframing, Prototyping)</li>
-            <li>Database Management (MySQL, MongoDB)</li>
-            <li>Problem-Solving & Critical Thinking</li>
-            <li>Team Collaboration & Communication</li>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/confy-removebg-preview.png" alt="Logo" width="40" height="40">
+            Confidence <span>Nyathi</span>
+        </a>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="Skills.html" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="Education.html" class="nav-link">Education</a></li>
+            <li class="nav-item"><a href="Certificates.html" class="nav-link">Certificates</a></li>
+            <li class="nav-item"><a href="Internships.html" class="nav-link">Experience</a></li>
+            <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
         </ul>
-    </section>
-    <!-- Chatbot -->
-    <div class="chatbot-container">
-        <div class="chatbot-toggle" id="chatbotToggle">
-            <i class="fas fa-comments"></i>
-        </div>
-        <div class="chatbot-box" id="chatbotBox">
-            <div class="chatbot-header">
-                <div class="chatbot-title">
-                    <div class="chatbot-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div>
-                        <h3>Portfolio Assistant</h3>
-                        <small>Ask me anything about Confidence</small>
-                    </div>
+    </nav>
+
+    <div class="skills-container">
+        <h1 class="page-title">My Skills</h1>
+        
+        <div class="skills-grid">
+            <!-- Front-End Skills -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-code"></i>
                 </div>
-                <button class="chatbot-close" id="chatbotClose">
-                    <i class="fas fa-times"></i>
-                </button>
+                <h3 class="skill-title">Front-End Development</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">HTML5, CSS3, JavaScript (ES6+)</li>
+                    <li class="skill-item">React.js & Next.js</li>
+                    <li class="skill-item">Responsive Design</li>
+                    <li class="skill-item">Tailwind CSS & Styled Components</li>
+                    <li class="skill-item">Web Performance Optimization</li>
+                </ul>
             </div>
-            <div class="chatbot-messages" id="chatMessages">
-                <!-- Messages will be added here by JS -->
+            
+            <!-- Back-End Skills -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3 class="skill-title">Back-End Development</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Node.js & Express</li>
+                    <li class="skill-item">Python (Django, Flask)</li>
+                    <li class="skill-item">RESTful API Design</li>
+                    <li class="skill-item">GraphQL</li>
+                    <li class="skill-item">Authentication & Security</li>
+                </ul>
             </div>
-            <div class="chatbot-input">
-                <input type="text" id="userInput" placeholder="Type your question here..." aria-label="Type your message">
-                <button id="sendButton" type="button">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+            
+            <!-- UI/UX Skills -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3 class="skill-title">UI/UX Design</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Figma & Adobe XD</li>
+                    <li class="skill-item">User Research & Testing</li>
+                    <li class="skill-item">Wireframing & Prototyping</li>
+                    <li class="skill-item">Design Systems</li>
+                    <li class="skill-item">Accessibility Standards</li>
+                </ul>
+            </div>
+            
+            <!-- Database Skills -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3 class="skill-title">Database & DevOps</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">MySQL & PostgreSQL</li>
+                    <li class="skill-item">MongoDB & Firebase</li>
+                    <li class="skill-item">Docker & Kubernetes</li>
+                    <li class="skill-item">CI/CD Pipelines</li>
+                    <li class="skill-item">AWS & GCP Basics</li>
+                </ul>
+            </div>
+            
+            <!-- Soft Skills -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="skill-title">Professional Skills</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Agile Methodology</li>
+                    <li class="skill-item">Problem Solving</li>
+                    <li class="skill-item">Team Collaboration</li>
+                    <li class="skill-item">Technical Writing</li>
+                    <li class="skill-item">Continuous Learning</li>
+                </ul>
+            </div>
+            
+            <!-- Emerging Tech -->
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="skill-title">Emerging Technologies</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">AI/ML Fundamentals</li>
+                    <li class="skill-item">Blockchain Basics</li>
+                    <li class="skill-item">Web3 & Smart Contracts</li>
+                    <li class="skill-item">AR/VR Concepts</li>
+                    <li class="skill-item">IoT Applications</li>
+                </ul>
             </div>
         </div>
     </div>
 
     <script>
-        // JavaScript for additional interactivity
-        document.addEventListener('DOMContentLoaded', () => {
-            const listItems = document.querySelectorAll('li');
-
-            listItems.forEach(item => {
-                item.addEventListener('mouseenter', () => {
-                    item.style.transition = 'all 0.3s ease-in-out';
-                });
-
-                item.addEventListener('mouseleave', () => {
-                    item.style.transition = 'all 0.3s ease-in-out';
-                });
-            });
-        });
-    </script>
-    <script>
+        // Add dark mode toggle functionality if needed
         document.addEventListener('DOMContentLoaded', function() {
-            // DOM elements
-            const chatToggle = document.querySelector('.chatbot-toggle');
-            const chatBox = document.querySelector('.chatbot-box');
-            const chatClose = document.querySelector('.chatbot-close');
-            const messagesContainer = document.getElementById('chatMessages');
-            const userInput = document.getElementById('userInput');
-            const sendButton = document.getElementById('sendButton');
-            
-            // Chat knowledge base
-    const knowledgeBase = {
-        "name": ["My name is Tiyani Confidence Nyathi, a professional software developer.", "You can call me Tiyani or Confidence."],
-        "who are you": ["I'm Tiyani Confidence Nyathi, an Honours Degree graduate from Vaal University of Technology, passionate about leveraging ICT for innovative solutions."],
-        "what do you do": ["I work as a software developer. I've gained valuable experience in helpdesk and desktop support roles."],
-        "education": ["I hold an Honours Degree in Information Technology from Vaal University of Technology."],
-        "experience": ["I have experience as a Helpdesk Support Specialist and Desktop Support Technician, building skills in troubleshooting and IT solutions."],
-        "skills": ["My skills include web development, front-end and back-end technologies, and UI/UX design."],
-        "achievements": ["I successfully completed my Honours Degree and built several web development projects from scratch."],
-        "contact": ["You can reach me via email at tiyanieyc33@gmail.com or connect with me on LinkedIn at linkedin.com/in/tiyani-confidence-334541197/."],
-        "projects": ["I've worked on multiple web development projects focused on creating responsive and user-friendly applications."],
-        "certifications": ["I possess certifications in web development and IT-related fields to enhance my technical expertise."],
-        "location": ["I'm based in South Africa."],
-        "email": ["You can reach me at tiyanieyc33@gmail.com."],
-        "linkedin": ["Connect with me on LinkedIn at linkedin.com/in/tiyani-confidence-334541197/."],
-        "graduation": ["I graduated with an Honours Degree from Vaal University of Technology."],
-        "interests": ["I'm passionate about web development, IT systems, and design, aiming to create innovative digital solutions."],
-        "hire": ["I'm open to new opportunities! Feel free to reach out via email or through my website's contact form."],
-        "cv": ["You can download my CV directly from my website by clicking the 'Download CV' button on the homepage."],
-        "university": ["I studied at Vaal University of Technology, earning my Honours Degree in Information Technology."],
-        "portfolio": ["Welcome to my portfolio website! Explore my education, experience, skills, and achievements."]
-    };
-            
-            // Greetings and fallback responses
-            const greetings = ["hello", "hi", "hey", "greetings", "good morning", "good afternoon", "good evening"];
-            const greetingResponses = ["Hello! How can I help you learn more about tiyani?", "Hi there! Got any questions about Rifuwo's experience or skills?", "Hey! I'm here to tell you all about tiyani. What would you like to know?"];
-            
-            const fallbackResponses = [
-                "I don't have that specific information about Rifuwo. Would you like to know about his education, experience, or skills instead?",
-                "I'm not sure about that. But I can tell you about tiyanis's background in dektop support if you're interested.",
-                "I don't have details on that. Perhaps try asking about tiyani's education, work experience, or how to contact him?"
-            ];
-            
-            // Suggested questions
-            const suggestions = [
-                "What's your education?",
-                "Tell me about your experience",
-                "What are your skills?",
-                "How can I contact you?",
-                "What projects have you worked on?",
-                "Where are you located?",
-                "What are your achievements?"
-            ];
-    
-            // Chat functions
-            function toggleChat() {
-                chatBox.classList.toggle('active');
-                if (chatBox.classList.contains('active') && messagesContainer.children.length === 0) {
-                    // First time opening chat
-                    addBotMessage("Hello! 👋 I'm tiyani's virtual assistant. How can I help you today?");
-                    showSuggestions();
-                }
-            }
-    
-            function showSuggestions() {
-                const suggestionsDiv = document.createElement('div');
-                suggestionsDiv.className = 'suggestion-chips';
-                
-                // Select 4 random suggestions
-                const randomSuggestions = suggestions.sort(() => 0.5 - Math.random()).slice(0, 4);
-                
-                randomSuggestions.forEach(suggestion => {
-                    const chip = document.createElement('div');
-                    chip.className = 'suggestion-chip';
-                    chip.textContent = suggestion;
-                    chip.addEventListener('click', () => {
-                        handleUserInput(suggestion);
-                    });
-                    suggestionsDiv.appendChild(chip);
-                });
-                
-                messagesContainer.appendChild(suggestionsDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-    
-            function addUserMessage(message) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message user-message';
-                messageDiv.textContent = message;
-                messagesContainer.appendChild(messageDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-    
-            function addBotMessage(message) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message bot-message';
-                messageDiv.textContent = message;
-                messagesContainer.appendChild(messageDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-    
-            function showTypingIndicator() {
-                const typingDiv = document.createElement('div');
-                typingDiv.className = 'thinking';
-                typingDiv.id = 'typingIndicator';
-                for (let i = 0; i < 3; i++) {
-                    const dot = document.createElement('span');
-                    typingDiv.appendChild(dot);
-                }
-                messagesContainer.appendChild(typingDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-    
-            function removeTypingIndicator() {
-                const indicator = document.getElementById('typingIndicator');
-                if (indicator) {
-                    indicator.remove();
-                }
-            }
-    
-            function getResponse(input) {
-                input = input.toLowerCase().trim();
-                
-                // Check for greetings
-                if (greetings.some(greeting => input.includes(greeting))) {
-                    return greetingResponses[Math.floor(Math.random() * greetingResponses.length)];
-                }
-                
-                // Check knowledge base
-                for (const [key, responses] of Object.entries(knowledgeBase)) {
-                    if (input.includes(key)) {
-                        return responses[Math.floor(Math.random() * responses.length)];
-                    }
-                }
-                
-                // For questions about "you" convert to third person
-                if (input.includes("you") && !input.includes("contact you")) {
-                    for (const [key, responses] of Object.entries(knowledgeBase)) {
-                        // Replace "you" with appropriate key words
-                        const modifiedInput = input
-                            .replace("are you", key)
-                            .replace("do you", key)
-                            .replace("about you", "about " + key)
-                            .replace("your", key);
-                            
-                        if (modifiedInput.includes(key)) {
-                            return responses[Math.floor(Math.random() * responses.length)];
-                        }
-                    }
-                }
-                
-                // Fallback
-                return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
-            }
-    
-            function handleUserInput(message = null) {
-                // Get message either from parameter or input field
-                const userMessage = message || userInput.value.trim();
-                if (!userMessage) return;
-                
-                // Clear input field if it was used
-                if (!message) userInput.value = '';
-                
-                // Add user message to chat
-                addUserMessage(userMessage);
-                
-                // Show typing indicator
-                showTypingIndicator();
-                
-                // Disable send button while "thinking"
-                sendButton.disabled = true;
-                
-                // Simulate bot "thinking" delay
-                setTimeout(() => {
-                    removeTypingIndicator();
-                    const botResponse = getResponse(userMessage);
-                    addBotMessage(botResponse);
-                    
-                    // 33% chance to show suggestions after response
-                    if (Math.random() < 0.33) {
-                        showSuggestions();
-                    }
-                    
-                    sendButton.disabled = false;
-                }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
-            }
-    
-            // Event listeners
-            chatToggle.addEventListener('click', toggleChat);
-            chatClose.addEventListener('click', toggleChat);
-            
-            sendButton.addEventListener('click', () => handleUserInput());
-            
-            userInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    handleUserInput();
-                }
-            });
-            
-            // Focus input when chat opens
-            chatToggle.addEventListener('click', function() {
-                if (chatBox.classList.contains('active')) {
-                    setTimeout(() => userInput.focus(), 300);
+            // Scroll effect for navbar
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
                 }
             });
         });

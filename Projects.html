@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Confidence Nyathi</title>
+    <link rel="icon" href="img/confy-removebg-preview.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Modern color scheme 2025 */
+            --primary: #5046e4;
+            --primary-dark: #3832a0;
+            --primary-light: #7c74ff;
+            --secondary: #00d4ff;
+            --accent: #ff7d54;
+            --success: #06d6a0;
+            --dark: #121420;
+            --dark-blue: #1d2030;
+            --dark-surface: #1e1e2a;
+            --light: #f8f9ff;
+            --text: #333340;
+            --text-light: #9395a6;
+            --text-dark: #121420;
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --gradient-accent: linear-gradient(135deg, var(--accent), #ffab7f);
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-primary: 0 10px 25px rgba(80, 70, 228, 0.25);
+            --shadow-accent: 0 10px 25px rgba(255, 125, 84, 0.25);
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --border-radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .dark-mode {
+            --light: var(--dark-blue);
+            --text: #e0e1ff;
+            --text-light: #8183a1;
+        }
+
+        /* Navigation styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .dark-mode .navbar.scrolled {
+            background: rgba(29, 32, 48, 0.8);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dark-mode .logo {
+            color: var(--light);
+        }
+
+        .logo span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .dark-mode .menu-toggle {
+            color: var(--light);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dark-mode .nav-link {
+            color: var(--light);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: var(--border-radius-full);
+            transition: var(--transition);
+        }
+
+        .dark-mode .theme-toggle {
+            color: var(--light);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            max-width: 1400px;
+            margin: 100px auto 50px;
+            padding: 0 2.5rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .project-card {
+            background: var(--dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .dark-mode .project-title {
+            color: var(--light);
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(80, 70, 228, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--border-radius-full);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .dark-mode .tech-tag {
+            background: rgba(124, 116, 255, 0.2);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .project-link-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-primary);
+        }
+
+        .project-link-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-primary), 0 15px 30px rgba(80, 70, 228, 0.2);
+        }
+
+        .project-link-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .project-link-outline:hover {
+            background: rgba(80, 70, 228, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .featured-project .project-image {
+            height: 100%;
+            min-height: 350px;
+        }
+
+        .featured-project .project-content {
+            padding: 2rem;
+        }
+
+        .featured-project .project-title {
+            font-size: 2rem;
+        }
+
+        /* Mobile styles */
+        @media screen and (max-width: 992px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project .project-image {
+                min-height: 250px;
+            }
+
+            .navbar {
+                padding: 1rem;
+            }
+
+            .navbar.scrolled {
+                padding: 0.8rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100%;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                padding: 6rem 2rem 2rem;
+                transition: 0.5s;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .dark-mode .nav-menu {
+                background: var(--dark-blue);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .dark-mode .nav-link {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-right {
+                margin-left: auto;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .projects-container {
+                padding: 0 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/confy-removebg-preview.png" alt="Logo" width="40" height="40">
+            Confidence <span>Nyathi</span>
+        </a>
+        
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="Projects.html" class="nav-link active">Projects</a></li>
+            <li class="nav-item"><a href="Skills.html" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="Education.html" class="nav-link">Education</a></li>
+            <li class="nav-item"><a href="Certificates.html" class="nav-link">Certificates</a></li>
+            <li class="nav-item"><a href="Internships.html" class="nav-link">Experience</a></li>
+            <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Projects Section -->
+    <div class="projects-container">
+        <div class="page-header">
+            <h1 class="page-title animate__animated animate__fadeIn">My Projects</h1>
+            <p class="page-subtitle animate__animated animate__fadeIn animate__delay-1s">
+                Here's a collection of my recent work. Each project represents a unique challenge and solution.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Featured Project -->
+            <div class="project-card featured-project animate__animated animate__fadeInUp">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI Analytics Dashboard">
+                    <span class="project-badge">Featured</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AI-Powered Analytics Dashboard</h3>
+                    <p class="project-description">
+                        A comprehensive business intelligence platform that uses machine learning to provide predictive analytics and data visualization for enterprise clients. The system processes large datasets in real-time and delivers actionable insights through an intuitive interface.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link project-link-primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="#" class="project-link project-link-outline">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 1 -->
+            <div class="project-card animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="project-image">
+                    <img src="img/morse code.PNG" alt="Morse-Code-Translator">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Morse-Code-Translator</h3>
+                    <p class="project-description">
+                 Morse code translator that automatically detects input and converts it between plain text and Morse code. It's perfect for education, communication, and cryptography applications.       
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">JAVASCRIPT</span>
+                        <span class="tech-tag">CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://tiyani33.github.io/Morse-Code-Translator/" class="project-link project-link-primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://tiyani33.github.io/Morse-Code-Translator/" class="project-link project-link-outline">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="project-image">
+                    <img src="img/MOVIE APP.PNG" alt="React Movie App">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Movie App Database</h3>
+                    <p class="project-description">
+                    Overview A modern, fast movie database web application built with React using The Movie DB API. This app displays popular movies and provides a search functionality to find your favorite films. Each movie page shows detailed information including cast, crew, runtime, budget, revenue, ratings, and more.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JAVASCRIPT</span>
+                        <span class="tech-tag">HTLM</span>
+                        <span class="tech-tag">CSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://cute-klepon-ac3177.netlify.app/" class="project-link project-link-primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://cute-klepon-ac3177.netlify.app/" class="project-link project-link-outline">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card animate__animated animate__fadeInUp animate__delay-3s">
+                <div class="project-image">
+                    <img src="img/SMART BOOKING.PNG" alt="BookWise Smart-booking-system">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Smart-booking-system</h3>
+                    <p class="project-description">
+                    BookWise is a full-stack web application built for Capaciti that allows users to register, log in and book services such as rooms or venues. It features a modern React frontend, a Node.js/Express backend and a PostgreSQL database. This project was built as a demonstration of full-stack web development using modern tools and practices.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag"><Node class="js"></node></span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag"><javascript></html></span>
+                        <span class="tech-tag">css</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://bookwise-15uq.onrender.com/" class="project-link project-link-primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://bookwise-15uq.onrender.com/" class="project-link project-link-outline">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                });
+            }
+
+            // Close mobile menu when clicking a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+
+            // Dark mode toggle (if you want to implement it)
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    
+                    // Save preference to localStorage
+                    if (document.body.classList.contains('dark-mode')) {
+                        localStorage.setItem('darkMode', 'enabled');
+                    } else {
+                        localStorage.setItem('darkMode', 'disabled');
+                    }
+                });
+
+                // Check for saved user preference
+                if (localStorage.getItem('darkMode') === 'enabled') {
+                    document.body.classList.add('dark-mode');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

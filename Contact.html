@@ -3,1040 +3,503 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me - Software Developer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Contact - Confidence Nyathi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* General Styles */
+        :root {
+            --primary: #5046e4;
+            --primary-dark: #3832a0;
+            --primary-light: #7c74ff;
+            --secondary: #00d4ff;
+            --accent: #ff7d54;
+            --dark: #121420;
+            --dark-blue: #1d2030;
+            --light: #f8f9ff;
+            --text: #333340;
+            --text-light: #9395a6;
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            --border-radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a2e;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        header {
-            background-color: #162447;
-            color: white;
-            text-align: center;
-            padding: 2em 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        .dark-mode {
+            --light: var(--dark-blue);
+            --text: #e0e1ff;
+            --text-light: #8183a1;
         }
 
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        nav {
-            margin-top: 1em;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: color 0.3s ease-in-out;
-        }
-
-        nav a:hover {
-            color: #00c6ff;
-        }
-
-        /* Contact Info Section */
-        .contact-info {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #162447;
-            border-radius: 12px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            animation: slideIn 1s ease-in-out;
-        }
-
-        .contact-info p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .contact-info ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .contact-info li {
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .contact-info li i {
-            margin-right: 10px;
-            color: #00c6ff;
-        }
-
-        .contact-info a {
-            color: #00c6ff;
-            text-decoration: none;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .contact-info a:hover {
-            color: #ff4d4d;
-        }
-
-        /* Contact Form Section */
-        .contact-form {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #162447;
-            border-radius: 12px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            animation: slideIn 1.5s ease-in-out;
-        }
-
-        .contact-form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 2em;
-            color: #00c6ff;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #00c6ff;
-            border-radius: 5px;
-            background-color: #1a1a2e;
-            color: #e0e0e0;
-            font-size: 1em;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #ff4d4d;
-        }
-
-        .contact-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: #00c6ff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .contact-form button:hover {
-            background-color: #ff4d4d;
-        }
-
-        /* Chatbot Styles */
-        .chatbot-container {
+        /* Navigation styles */
+        .navbar {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
-        }
-
-        .chatbot-toggle {
-            background-color: #00c6ff;
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s ease-in-out;
-            animation: bounce 2s infinite;
-        }
-
-        .chatbot-toggle:hover {
-            background-color: #ff4d4d;
-        }
-
-        .chatbot-box {
-            display: none;
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 300px;
-            background-color: #162447;
-            border-radius: 12px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .chatbot-header {
-            background-color: #00c6ff;
-            color: white;
-            padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.5rem 2.5rem;
+            transition: var(--transition);
+            background: rgba(248, 249, 255, 0.85); /* Light background with opacity */
+            backdrop-filter: blur(12px); /* Blur effect for glassmorphism */
+            box-shadow: var(--shadow-sm);
         }
 
-        .chatbot-title {
-            display: flex;
-            align-items: center;
+        .navbar.scrolled {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2.5rem;
+            box-shadow: var(--shadow-sm);
         }
 
-        .chatbot-avatar {
-            margin-right: 10px;
+        .dark-mode .navbar {
+            background: rgba(29, 32, 48, 0.85);
+            backdrop-filter: blur(12px);
         }
 
-        .chatbot-messages {
-            padding: 10px;
-            height: 200px;
-            overflow-y: auto;
-            background-color: #1a1a2e;
+        .dark-mode .navbar.scrolled {
+            background: rgba(29, 32, 48, 0.8);
         }
 
-        .chatbot-input {
-            display: flex;
-            border-top: 1px solid #00c6ff;
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            outline: none;
-            background-color: #1a1a2e;
-            color: #e0e0e0;
-        }
-
-        .chatbot-input button {
-            background-color: #00c6ff;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .chatbot-input button:hover {
-            background-color: #ff4d4d;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
-        }
-
-        
-        /* Hero section */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 2.5rem;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 80vw;
-            height: 80vw;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(80, 70, 228, 0.1), rgba(0, 212, 255, 0.05));
-            top: -40vw;
-            right: -40vw;
-            z-index: -1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 60vw;
-            height: 60vw;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255, 125, 84, 0.07), rgba(255, 171, 127, 0.05));
-            bottom: -30vw;
-            left: -30vw;
-            z-index: -1;
-        }
-
-        .hero-content {
-            width: 50%;
-            padding-right: 2rem;
-        }
-
-        .hero-image {
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .profile-img {
-            width: 80%;
-            max-width: 500px;
-            border-radius: var(--border-radius-xl);
-            box-shadow: var(--shadow-lg);
-            animation: float 6s ease-in-out infinite;
-            position: relative;
-            z-index: 2;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .bg-blob {
-            position: absolute;
-            width: 60%;
-            height: 90%;
-            background: var(--gradient-primary);
-            filter: blur(60px);
-            opacity: 0.15;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .greeting {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .name {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
             color: var(--text-dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .dark-mode .name {
+        .dark-mode .logo {
             color: var(--light);
         }
 
-        .name span {
-            display: block;
+        .logo span {
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .title {
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dark-mode .nav-link {
+            color: var(--light);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .contact-info {
+            background: var(--dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-info h3 {
             font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 1.5rem;
         }
 
-        .description {
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
             font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: var(--text);
-            max-width: 600px;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
+        .dark-mode .contact-details h4 {
+            color: var(--light);
         }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.9rem 2rem;
-            border-radius: var(--border-radius-full);
-            font-weight: 600;
-            font-size: 1rem;
+        .contact-details p, 
+        .contact-details a {
+            color: var(--text-light);
             text-decoration: none;
             transition: var(--transition);
-            box-shadow: var(--shadow-sm);
         }
 
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: var(--shadow-primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-primary), 0 15px 30px rgba(80, 70, 228, 0.2);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text);
-            border: 2px solid var(--text-light);
-        }
-
-        .dark-mode .btn-outline {
-            color: var(--light);
-            border-color: var(--text-light);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary);
+        .contact-details a:hover {
             color: var(--primary);
-            transform: translateY(-3px);
         }
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
-            list-style: none;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 3rem;
-            height: 3rem;
-            background: white;
+            width: 40px;
+            height: 40px;
+            background: var(--light);
             border-radius: var(--border-radius-full);
-            color: var(--text);
+            color: var(--primary);
             font-size: 1.2rem;
-            text-decoration: none;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
         }
 
         .dark-mode .social-link {
             background: var(--dark-surface);
-            color: var(--light);
         }
 
         .social-link:hover {
-            transform: translateY(-5px);
-            color: var(--primary);
+            transform: translateY(-3px);
+            background: var(--primary);
+            color: white;
             box-shadow: var(--shadow-md);
         }
 
-        /* Chatbot styles */
-        .chatbot-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .chatbot-toggle {
-            background: var(--gradient-primary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-primary);
-            transition: var(--transition);
-        }
-
-        .chatbot-toggle:hover {
-            transform: scale(1.05) rotate(5deg);
-        }
-
-        .chatbot-toggle i {
-            font-size: 24px;
-        }
-
-        .chatbot-box {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 350px;
+        /* Contact Form */
+        .contact-form {
             background: white;
             border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            display: none;
-            flex-direction: column;
-            height: 500px;
-            transition: var(--transition);
-            transform-origin: bottom right;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .dark-mode .chatbot-box {
+        .dark-mode .contact-form {
             background: var(--dark-surface);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .chatbot-box.active {
-            display: flex;
-            animation: scaleUp 0.3s forwards;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
 
-        @keyframes scaleUp {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
         }
 
-        .chatbot-header {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .chatbot-title {
-            display: flex;
-            align-items: center;
-        }
-
-        .chatbot-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-        }
-
-        .chatbot-avatar i {
-            color: var(--primary);
-            font-size: 20px;
-        }
-
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .chatbot-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .dark-mode .chatbot-messages {
-            background: var(--dark-surface);
-        }
-
-        .message {
-            max-width: 80%;
-            padding: 12px 16px;
-            margin-bottom: 15px;
-            border-radius: 18px;
-            position: relative;
-            animation: fadeIn 0.3s forwards;
-            word-wrap: break-word;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .bot-message {
-            background: #f0f2f5;
-            color: var(--text);
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-
-        .dark-mode .bot-message {
-            background: rgba(255, 255, 255, 0.1);
+        .dark-mode .form-group label {
             color: var(--light);
         }
 
-        .user-message {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 5px;
-        }
-
-        .thinking {
-            display: flex;
-            gap: 5px;
-            padding: 15px;
-            background: #f0f2f5;
-            border-radius: 18px;
-            align-self: flex-start;
-            margin-bottom: 15px;
-            animation: pulse 1.5s infinite;
-        }
-
-        .dark-mode .thinking {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .thinking span {
-            width: 8px;
-            height: 8px;
-            background: var(--text-light);
-            border-radius: 50%;
-        }
-
-        .thinking span:nth-child(1) {
-            animation: bounce 1.5s infinite 0s;
-        }
-
-        .thinking span:nth-child(2) {
-            animation: bounce 1.5s infinite 0.2s;
-        }
-
-        .thinking span:nth-child(3) {
-            animation: bounce 1.5s infinite 0.4s;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
-
-        .chatbot-input {
-            display: flex;
-            padding: 15px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            background: white;
-        }
-
-        .dark-mode .chatbot-input {
-            background: var(--dark-surface);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 12px 15px;
-            border: 1px solid #eaeaea;
-            border-radius: 20px;
-            font-size: 14px;
-            outline: none;
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius-sm);
+            font-size: 1rem;
             transition: var(--transition);
-            background: white;
-            color: var(--text);
+            background: var(--light);
         }
 
-        .dark-mode .chatbot-input input {
-            background: rgba(255, 255, 255, 0.05);
+        .dark-mode .form-control {
+            background: var(--dark-surface);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--light);
         }
 
-        .chatbot-input input:focus {
+        .form-control:focus {
+            outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 2px rgba(80, 70, 228, 0.1);
         }
 
-        .chatbot-input button {
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
             background: var(--gradient-primary);
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: 10px;
+            padding: 0.9rem 2rem;
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            width: 100%;
         }
 
-        .chatbot-input button:hover {
-            transform: rotate(15deg);
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
         }
 
-        .chatbot-input button:disabled {
-            background: var(--text-light);
-            cursor: not-allowed;
+        /* Map */
+        .map-container {
+            height: 300px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-top: 3rem;
         }
 
-        .suggestion-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-            padding: 0 5px;
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
-        .suggestion-chip {
-            background: white;
-            border: 1px solid #eaeaea;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .dark-mode .suggestion-chip {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--light);
-        }
-
-        .suggestion-chip:hover {
-            background: #f0f2f5;
-            border-color: var(--text-light);
-        }
-
-        .dark-mode .suggestion-chip:hover {
-            background: rgba(255, 255, 255, 0.1);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Contact Me</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="About.html">About</a>
-            <a href="Skills.html">Skills</a>
-            <a href="Education.html">Education</a>
-            <a href="Certificates.html">Certificates</a>
-            <a href="Internships.html">Experience</a>
-            <a href="Contact.html">Contact</a>
-        </nav>
-    </header>
-
-    <!-- Contact Info Section -->
-    <section class="contact-info">
-        <p>If you are interested in hiring me, feel free to reach out!</p>
-        <ul>
-            <li><i class="fas fa-envelope"></i> Email: <a href="mailto:tiyanieyc33@gmail.com">tiyanieyc33@gmail.com</a></li>
-            <li><i class="fas fa-phone"></i> Phone: <a href="tel:+27714773797">+27 71 477 3797</a></li>
-            <li><i class="fab fa-linkedin"></i> LinkedIn: <a href="http://linkedin.com/in/tiyani-confidence-334541197" target="_blank">My LinkedIn</a></li>
-            <li><i class="fab fa-github"></i> GitHub: <a href="https://github.com/Tiyani33" target="_blank">My GitHub</a></li>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/confy-removebg-preview.png" alt="Logo" width="40" height="40">
+            Confidence <span>Nyathi</span>
+        </a>
+        
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="Skills.html" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="Education.html" class="nav-link">Education</a></li>
+            <li class="nav-item"><a href="Certificates.html" class="nav-link">Certificates</a></li>
+            <li class="nav-item"><a href="Internships.html" class="nav-link">Experience</a></li>
+            <li class="nav-item"><a href="Contact.html" class="nav-link active">Contact</a></li>
         </ul>
-    </section>
+    </nav>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form">
-        <h2>Send Me a Message</h2>
-        <form id="contactForm">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+    <div class="contact-container">
+        <h1 class="page-title">Get In Touch</h1>
+        
+        <div class="contact-content">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <a href="mailto:tiyanieyc33@gmail.com">tiyanieyc33@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <a href="tel:+27714773797">+27 71 477 3797</a>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Location</h4>
+                        <p>Vanderbijlpark, South Africa</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Availability</h4>
+                        <p>Monday - Friday: 9AM - 5PM</p>
+                        <p>Weekends: By appointment</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="http://linkedin.com/in/tiyani-confidence-334541197" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Tiyani33" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3>Send Me a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Map -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.988243520316!2d27.837549315032!3d-26.19938398344049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95a6a9c9a2b0a1%3A0x9e5a6a9c9a2b0a1!2sVanderbijlpark%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
 
-    
-
-    <script>
-        // Chatbot Toggle
-        function toggleChatbot() {
-            const chatbotBox = document.getElementById('chatbotBox');
-            chatbotBox.style.display = chatbotBox.style.display === 'none' || chatbotBox.style.display === '' ? 'block' : 'none';
-        }
-
-        // Send Message Function
-        function sendMessage() {
-            const userInput = document.getElementById('userInput');
-            const chatMessages = document.getElementById('chatMessages');
-            const message = userInput.value.trim();
-
-            if (message) {
-                const userMessage = document.createElement('div');
-                userMessage.textContent = message;
-                userMessage.style.textAlign = 'right';
-                userMessage.style.margin = '10px 0';
-                chatMessages.appendChild(userMessage);
-
-                userInput.value = '';
-
-                // Simulate a response from the chatbot
-                setTimeout(() => {
-                    const botMessage = document.createElement('div');
-                    botMessage.textContent = 'Hello! How can I assist you today?';
-                    botMessage.style.textAlign = 'left';
-                    botMessage.style.margin = '10px 0';
-                    chatMessages.appendChild(botMessage);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 1000);
-            }
-        }
-
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            document.getElementById('contactForm').reset();
-        });
-    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // DOM elements
-            const chatToggle = document.querySelector('.chatbot-toggle');
-            const chatBox = document.querySelector('.chatbot-box');
-            const chatClose = document.querySelector('.chatbot-close');
-            const messagesContainer = document.getElementById('chatMessages');
-            const userInput = document.getElementById('userInput');
-            const sendButton = document.getElementById('sendButton');
-            
-            // Chat knowledge base
-    const knowledgeBase = {
-        "name": ["My name is Tiyani Confidence Nyathi, a professional software developer.", "You can call me Tiyani or Confidence."],
-        "who are you": ["I'm Tiyani Confidence Nyathi, an Honours Degree graduate from Vaal University of Technology, passionate about leveraging ICT for innovative solutions."],
-        "what do you do": ["I work as a software developer. I've gained valuable experience in helpdesk and desktop support roles."],
-        "education": ["I hold an Honours Degree in Information Technology from Vaal University of Technology."],
-        "experience": ["I have experience as a Helpdesk Support Specialist and Desktop Support Technician, building skills in troubleshooting and IT solutions."],
-        "skills": ["My skills include web development, front-end and back-end technologies, and UI/UX design."],
-        "achievements": ["I successfully completed my Honours Degree and built several web development projects from scratch."],
-        "contact": ["You can reach me via email at tiyanieyc33@gmail.com or connect with me on LinkedIn at linkedin.com/in/tiyani-confidence-334541197/."],
-        "projects": ["I've worked on multiple web development projects focused on creating responsive and user-friendly applications."],
-        "certifications": ["I possess certifications in web development and IT-related fields to enhance my technical expertise."],
-        "location": ["I'm based in South Africa."],
-        "email": ["You can reach me at tiyanieyc33@gmail.com."],
-        "linkedin": ["Connect with me on LinkedIn at linkedin.com/in/tiyani-confidence-334541197/."],
-        "graduation": ["I graduated with an Honours Degree from Vaal University of Technology."],
-        "interests": ["I'm passionate about web development, IT systems, and design, aiming to create innovative digital solutions."],
-        "hire": ["I'm open to new opportunities! Feel free to reach out via email or through my website's contact form."],
-        "cv": ["You can download my CV directly from my website by clicking the 'Download CV' button on the homepage."],
-        "university": ["I studied at Vaal University of Technology, earning my Honours Degree in Information Technology."],
-        "portfolio": ["Welcome to my portfolio website! Explore my education, experience, skills, and achievements."]
-    };
-            
-            // Greetings and fallback responses
-            const greetings = ["hello", "hi", "hey", "greetings", "good morning", "good afternoon", "good evening"];
-            const greetingResponses = ["Hello! How can I help you learn more about tiyani?", "Hi there! Got any questions about Rifuwo's experience or skills?", "Hey! I'm here to tell you all about tiyani. What would you like to know?"];
-            
-            const fallbackResponses = [
-                "I don't have that specific information about Rifuwo. Would you like to know about his education, experience, or skills instead?",
-                "I'm not sure about that. But I can tell you about tiyanis's background in dektop support if you're interested.",
-                "I don't have details on that. Perhaps try asking about tiyani's education, work experience, or how to contact him?"
-            ];
-            
-            // Suggested questions
-            const suggestions = [
-                "What's your education?",
-                "Tell me about your experience",
-                "What are your skills?",
-                "How can I contact you?",
-                "What projects have you worked on?",
-                "Where are you located?",
-                "What are your achievements?"
-            ];
-    
-            // Chat functions
-            function toggleChat() {
-                chatBox.classList.toggle('active');
-                if (chatBox.classList.contains('active') && messagesContainer.children.length === 0) {
-                    // First time opening chat
-                    addBotMessage("Hello! 👋 I'm tiyani's virtual assistant. How can I help you today?");
-                    showSuggestions();
-                }
-            }
-    
-            function showSuggestions() {
-                const suggestionsDiv = document.createElement('div');
-                suggestionsDiv.className = 'suggestion-chips';
-                
-                // Select 4 random suggestions
-                const randomSuggestions = suggestions.sort(() => 0.5 - Math.random()).slice(0, 4);
-                
-                randomSuggestions.forEach(suggestion => {
-                    const chip = document.createElement('div');
-                    chip.className = 'suggestion-chip';
-                    chip.textContent = suggestion;
-                    chip.addEventListener('click', () => {
-                        handleUserInput(suggestion);
-                    });
-                    suggestionsDiv.appendChild(chip);
-                });
-                
-                messagesContainer.appendChild(suggestionsDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-    
-            function addUserMessage(message) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message user-message';
-                messageDiv.textContent = message;
-                messagesContainer.appendChild(messageDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-    
-            function addBotMessage(message) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message bot-message';
-                messageDiv.textContent = message;
-                messagesContainer.appendChild(messageDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-    
-            function showTypingIndicator() {
-                const typingDiv = document.createElement('div');
-                typingDiv.className = 'thinking';
-                typingDiv.id = 'typingIndicator';
-                for (let i = 0; i < 3; i++) {
-                    const dot = document.createElement('span');
-                    typingDiv.appendChild(dot);
-                }
-                messagesContainer.appendChild(typingDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-    
-            function removeTypingIndicator() {
-                const indicator = document.getElementById('typingIndicator');
-                if (indicator) {
-                    indicator.remove();
-                }
-            }
-    
-            function getResponse(input) {
-                input = input.toLowerCase().trim();
-                
-                // Check for greetings
-                if (greetings.some(greeting => input.includes(greeting))) {
-                    return greetingResponses[Math.floor(Math.random() * greetingResponses.length)];
-                }
-                
-                // Check knowledge base
-                for (const [key, responses] of Object.entries(knowledgeBase)) {
-                    if (input.includes(key)) {
-                        return responses[Math.floor(Math.random() * responses.length)];
-                    }
-                }
-                
-                // For questions about "you" convert to third person
-                if (input.includes("you") && !input.includes("contact you")) {
-                    for (const [key, responses] of Object.entries(knowledgeBase)) {
-                        // Replace "you" with appropriate key words
-                        const modifiedInput = input
-                            .replace("are you", key)
-                            .replace("do you", key)
-                            .replace("about you", "about " + key)
-                            .replace("your", key);
-                            
-                        if (modifiedInput.includes(key)) {
-                            return responses[Math.floor(Math.random() * responses.length)];
-                        }
-                    }
-                }
-                
-                // Fallback
-                return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
-            }
-    
-            function handleUserInput(message = null) {
-                // Get message either from parameter or input field
-                const userMessage = message || userInput.value.trim();
-                if (!userMessage) return;
-                
-                // Clear input field if it was used
-                if (!message) userInput.value = '';
-                
-                // Add user message to chat
-                addUserMessage(userMessage);
-                
-                // Show typing indicator
-                showTypingIndicator();
-                
-                // Disable send button while "thinking"
-                sendButton.disabled = true;
-                
-                // Simulate bot "thinking" delay
-                setTimeout(() => {
-                    removeTypingIndicator();
-                    const botResponse = getResponse(userMessage);
-                    addBotMessage(botResponse);
-                    
-                    // 33% chance to show suggestions after response
-                    if (Math.random() < 0.33) {
-                        showSuggestions();
-                    }
-                    
-                    sendButton.disabled = false;
-                }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
-            }
-    
-            // Event listeners
-            chatToggle.addEventListener('click', toggleChat);
-            chatClose.addEventListener('click', toggleChat);
-            
-            sendButton.addEventListener('click', () => handleUserInput());
-            
-            userInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    handleUserInput();
+            // Scroll effect for navbar
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
                 }
             });
-            
-            // Focus input when chat opens
-            chatToggle.addEventListener('click', function() {
-                if (chatBox.classList.contains('active')) {
-                    setTimeout(() => userInput.focus(), 300);
-                }
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would typically send the form data to a server
+                // For this example, we'll just show an alert
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
             });
         });
     </script>

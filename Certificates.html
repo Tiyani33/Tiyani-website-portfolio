@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificates - Confidence Nyathi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         :root {
             --primary: #5046e4;
@@ -28,6 +29,7 @@
             --text: #e0e1ff;
             --text-light: #8183a1;
         }
+                /* Navigation styles */
         .navbar {
             position: fixed;
             top: 0;
@@ -39,7 +41,132 @@
             align-items: center;
             padding: 1.5rem 2.5rem;
             transition: all 0.3s ease;
+            background: rgba(248, 249, 255, 0.85); /* Light background with opacity */
+            backdrop-filter: blur(12px); /* Blur effect for glassmorphism */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
+
+        .navbar.scrolled {
+            background: rgba(248, 249, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .dark-mode .navbar {
+            background: rgba(29, 32, 48, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .dark-mode .navbar.scrolled {
+            background: rgba(29, 32, 48, 0.8);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dark-mode .logo {
+            color: var(--light);
+        }
+
+        .logo span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .dark-mode .menu-toggle {
+            color: var(--light);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dark-mode .nav-link {
+            color: var(--light);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: var(--border-radius-full);
+            transition: var(--transition);
+        }
+
+        .dark-mode .theme-toggle {
+            color: var(--light);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         .certificates-container {
             max-width: 1200px;
             margin: 100px auto 50px;
@@ -130,6 +257,7 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <a href="index.html" class="logo">
             <img src="img/confy-removebg-preview.png" alt="Logo" width="40" height="40">
@@ -145,75 +273,76 @@
             <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
         </ul>
     </nav>
+
     <div class="certificates-container">
         <h1 class="page-title">My Professional Certifications</h1>
         <div class="certificates-grid">
             <div class="certificate-card">
                 <div class="certificate-badge">Verified</div>
                 <div class="certificate-image">
-                    <img src="img/software-dev-cert.jpg" alt="Software Development Certificate">
+                    <img src="img/softwar dev.PNG" alt="Software Development Certificate">
                 </div>
                 <div class="certificate-content">
                     <h3 class="certificate-title">Introduction to Software Development</h3>
                     <div class="certificate-issuer">
-                        <i class="fas fa-university"></i> Tech Academy
+                        <i class="fas fa-university"></i> Coursera
                     </div>
                     <p class="certificate-description">
                         Comprehensive course covering fundamentals of software development including programming concepts, 
                         version control, and agile methodologies.
                     </p>
-                    <a href="#" class="certificate-link">View Certificate</a>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/CPH4DBJGU5KB" class="certificate-link">View Certificate</a>
                 </div>
             </div>
             <div class="certificate-card">
                 <div class="certificate-badge">Verified</div>
                 <div class="certificate-image">
-                    <img src="img/data-analysis-cert.jpg" alt="Data Analysis Certificate">
+                    <img src="img/data analysis with r.PNG" alt="Data Analysis Certificate">
                 </div>
                 <div class="certificate-content">
                     <h3 class="certificate-title">Data Analysis with R</h3>
                     <div class="certificate-issuer">
-                        <i class="fas fa-university"></i> Data Science Institute
+                        <i class="IBM"></i> Coursera
                     </div>
                     <p class="certificate-description">
                         Specialized training in data analysis techniques using R programming, 
                         including data visualization and statistical modeling.
                     </p>
-                    <a href="#" class="certificate-link">View Certificate</a>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/CPH4DBJGU5KB" class="certificate-link">View Certificate</a>
                 </div>
             </div>
             <div class="certificate-card">
                 <div class="certificate-badge">Verified</div>
                 <div class="certificate-image">
-                    <img src="img/data-science-cert.jpg" alt="Data Science Certificate">
+                    <img src="img/Data Science.PNG" alt="Data Science Certificate">
                 </div>
                 <div class="certificate-content">
                     <h3 class="certificate-title">Data Science Fundamentals</h3>
                     <div class="certificate-issuer">
-                        <i class="fas fa-university"></i> AI & Data Academy
+                        <i class="IBM"></i> Coursera
                     </div>
                     <p class="certificate-description">
                         Comprehensive introduction to data science concepts including machine learning, 
                         data preprocessing, and predictive modeling.
                     </p>
-                    <a href="#" class="certificate-link">View Certificate</a>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/ERE5FYF2ATKA" class="certificate-link">View Certificate</a>
                 </div>
             </div>
             <div class="certificate-card">
                 <div class="certificate-badge">Verified</div>
                 <div class="certificate-image">
-                    <img src="img/prof-dev-cert.jpg" alt="Professional Development Certificate">
+                    <img src="img/softwar dev.PNG" alt="Professional Development Certificate">
                 </div>
                 <div class="certificate-content">
                     <h3 class="certificate-title">Professional Development</h3>
                     <div class="certificate-issuer">
-                        <i class="fas fa-university"></i> Career Growth Institute
+                        <i class="IBM"></i> Coursera
                     </div>
                     <p class="certificate-description">
                         Training in professional skills including communication, teamwork, 
                         and leadership in technical environments.
                     </p>
-                    <a href="#" class="certificate-link">View Certificate</a>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/5YPI823X1CP2" class="certificate-link">View Certificate</a>
                 </div>
             </div>
         </div>
