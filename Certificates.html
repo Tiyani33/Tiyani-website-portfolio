@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Confidence Nyathi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5046e4;
+            --primary-dark: #3832a0;
+            --primary-light: #7c74ff;
+            --dark: #121420;
+            --dark-blue: #1d2030;
+            --light: #f8f9ff;
+            --text: #333340;
+            --text-light: #9395a6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .dark-mode {
+            --light: var(--dark-blue);
+            --text: #e0e1ff;
+            --text-light: #8183a1;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            transition: all 0.3s ease;
+        }
+        .certificates-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 2rem;
+        }
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+        }
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        .certificate-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .certificate-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .certificate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .certificate-card:hover .certificate-image img {
+            transform: scale(1.05);
+        }
+        .certificate-content {
+            padding: 25px;
+        }
+        .certificate-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .certificate-issuer {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .certificate-description {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .certificate-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .certificate-link:hover { background: var(--primary-dark); }
+        .certificate-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .certificates-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/confy-removebg-preview.png" alt="Logo" width="40" height="40">
+            Confidence <span>Nyathi</span>
+        </a>
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="Skills.html" class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="Education.html" class="nav-link">Education</a></li>
+            <li class="nav-item"><a href="Certificates.html" class="nav-link active">Certificates</a></li>
+            <li class="nav-item"><a href="Internships.html" class="nav-link">Experience</a></li>
+            <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="certificates-container">
+        <h1 class="page-title">My Professional Certifications</h1>
+        <div class="certificates-grid">
+            <div class="certificate-card">
+                <div class="certificate-badge">Verified</div>
+                <div class="certificate-image">
+                    <img src="img/software-dev-cert.jpg" alt="Software Development Certificate">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Introduction to Software Development</h3>
+                    <div class="certificate-issuer">
+                        <i class="fas fa-university"></i> Tech Academy
+                    </div>
+                    <p class="certificate-description">
+                        Comprehensive course covering fundamentals of software development including programming concepts, 
+                        version control, and agile methodologies.
+                    </p>
+                    <a href="#" class="certificate-link">View Certificate</a>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <div class="certificate-badge">Verified</div>
+                <div class="certificate-image">
+                    <img src="img/data-analysis-cert.jpg" alt="Data Analysis Certificate">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Data Analysis with R</h3>
+                    <div class="certificate-issuer">
+                        <i class="fas fa-university"></i> Data Science Institute
+                    </div>
+                    <p class="certificate-description">
+                        Specialized training in data analysis techniques using R programming, 
+                        including data visualization and statistical modeling.
+                    </p>
+                    <a href="#" class="certificate-link">View Certificate</a>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <div class="certificate-badge">Verified</div>
+                <div class="certificate-image">
+                    <img src="img/data-science-cert.jpg" alt="Data Science Certificate">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Data Science Fundamentals</h3>
+                    <div class="certificate-issuer">
+                        <i class="fas fa-university"></i> AI & Data Academy
+                    </div>
+                    <p class="certificate-description">
+                        Comprehensive introduction to data science concepts including machine learning, 
+                        data preprocessing, and predictive modeling.
+                    </p>
+                    <a href="#" class="certificate-link">View Certificate</a>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <div class="certificate-badge">Verified</div>
+                <div class="certificate-image">
+                    <img src="img/prof-dev-cert.jpg" alt="Professional Development Certificate">
+                </div>
+                <div class="certificate-content">
+                    <h3 class="certificate-title">Professional Development</h3>
+                    <div class="certificate-issuer">
+                        <i class="fas fa-university"></i> Career Growth Institute
+                    </div>
+                    <p class="certificate-description">
+                        Training in professional skills including communication, teamwork, 
+                        and leadership in technical environments.
+                    </p>
+                    <a href="#" class="certificate-link">View Certificate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
